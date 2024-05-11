@@ -1,0 +1,60 @@
+@startuml PingPong_Atari
+
+class JuegoPong {
+    -Paleta jugador1
+    -Paleta jugador2
+    -Pelota pelota
+    -Puntuacion puntuacion
+    -bool juegoPausado
+    -bool juegoTerminado
+    +void iniciarJuego()
+    +void pausarJuego()
+    +void reanudarJuego()
+    +void finalizarJuego()
+    +void actualizar()
+}
+
+class Paleta {
+    -int posX
+    -int posY
+    -int ancho
+    -int alto
+    -int velocidad
+    +void moverArriba()
+    +void moverAbajo()
+    +void renderizar()
+}
+
+class Pelota {
+    -int posX
+    -int posY
+    -int velocidadX
+    -int velocidadY
+    -int velocidad
+    +void mover()
+    +void verificarColisiones()
+    +void renderizar()
+}
+
+class Puntuacion {
+    -int puntuacionJugador1
+    -int puntuacionJugador2
+    +void incrementarPuntuacionJugador1()
+    +void incrementarPuntuacionJugador2()
+    +void reiniciar()
+    +void renderizar()
+}
+
+JuegoPong --l> Paleta : controla
+JuegoPong --* Pelota : controla
+JuegoPong --o Puntuacion : controla
+
+Paleta --* Pelota : interactúa con
+Puntuacion --o Paleta : actualiza
+Puntuacion --o Pelota : actualiza
+
+Paleta "1" -- "2..*" JuegoPong
+Pelota "1" -- "1" JuegoPong
+Puntuacion "1" -- "1" JuegoPong
+
+@enduml

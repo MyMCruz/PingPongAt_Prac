@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
     }
     imagen.close();
     
-    int ancho_pantalla = 110; // Cambiar este valor al ancho real de la pantalla
+    int ancho_pantalla = 125; // Cambiar este valor al ancho real de la pantalla
     int posX = 60;
     int posY = 6;
     bool mover_derecha = true;
@@ -67,7 +67,7 @@ int main(int argc, char const *argv[])
         cout << reset;
 
         // Aguardar un tiempo antes de mostrar el próximo fotograma.
-        this_thread::sleep_for(0.1s);
+        this_thread::sleep_for(0.06s);
     }
 
     return 0;
