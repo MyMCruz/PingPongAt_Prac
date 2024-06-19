@@ -1,60 +1,81 @@
 @startuml PingPong_Atari
 
 class JuegoPong {
-    -Paleta jugador1
-    -Paleta jugador2
-    -Pelota pelota
-    -Puntuacion puntuacion
-    -bool juegoPausado
-    -bool juegoTerminado
-    +void iniciarJuego()
-    +void pausarJuego()
-    +void reanudarJuego()
-    +void finalizarJuego()
-    +void actualizar()
+    - Paleta jugador1
+    - Paleta jugador2
+    - Pelota pelota
+    - Puntuacion puntuacion
+    - bool juegoPausado
+    - bool juegoTerminado
+    - bool esperandoReinicio
+    + JuegoPong()
+    + void iniciarJuego()
+    + void pausarJuego()
+    + void reanudarJuego()
+    + void finalizarJuego()
+    + void actualizar()
+    + void renderizar(sf::RenderWindow& ventana)
+    + bool isJuegoTerminado() const
+    + void manejarEventos(sf::RenderWindow& ventana)
+    + void esperarInicio(sf::RenderWindow& ventana)
+    + void esperarReinicio(sf::RenderWindow& ventana)
+}
+
+class Menu {
+    - int elementoSeleccionado
+    - sf::Font fuente
+    - sf::Text menu[2]
+    + Menu(float ancho, float alto)
+    + void renderizar(sf::RenderWindow& ventana)
+    + void moverArriba()
+    + void moverAbajo()
+    + int getElementoSeleccionado() const
 }
 
 class Paleta {
-    -int posX
-    -int posY
-    -int ancho
-    -int alto
-    -int velocidad
-    +void moverArriba()
-    +void moverAbajo()
-    +void renderizar()
+    - sf::RectangleShape paleta
+    - int velocidad
+    + Paleta(int x, int y, int ancho, int alto, int velocidad)
+    + void moverArriba()
+    + void moverAbajo()
+    + void renderizar(sf::RenderWindow& ventana)
+    + sf::FloatRect getBounds() const
 }
 
 class Pelota {
-    -int posX
-    -int posY
-    -int velocidadX
-    -int velocidadY
-    -int velocidad
-    +void mover()
-    +void verificarColisiones()
-    +void renderizar()
+    - sf::CircleShape pelota
+    - int velocidadX
+    - int velocidadY
+    + Pelota(int x, int y, int velocidad)
+    + void mover()
+    + void verificarColisiones(Paleta& jugador1, Paleta& jugador2, Puntuacion& puntuacion)
+    + void renderizar(sf::RenderWindow& ventana)
+    + sf::FloatRect getBounds() const
 }
 
 class Puntuacion {
-    -int puntuacionJugador1
-    -int puntuacionJugador2
-    +void incrementarPuntuacionJugador1()
-    +void incrementarPuntuacionJugador2()
-    +void reiniciar()
-    +void renderizar()
+    - int puntuacionJugador1
+    - int puntuacionJugador2
+    - int setsJugador1
+    - int setsJugador2
+    - sf::Font fuente
+    - sf::Text texto
+    + Puntuacion()
+    + void incrementarPuntuacionJugador1()
+    + void incrementarPuntuacionJugador2()
+    + void reiniciar()
+    + void renderizar(sf::RenderWindow& ventana)
+    + std::string obtenerPuntuacion() const
+    + int getSetsJugador1() const
+    + int getSetsJugador2() const
 }
 
-JuegoPong --l> Paleta : controla
-JuegoPong --* Pelota : controla
-JuegoPong --o Puntuacion : controla
+JuegoPong "1" *-- "2" Paleta : tiene
+JuegoPong "1" *-- "1" Pelota : tiene
+JuegoPong "1" *-- "1" Puntuacion : tiene
 
-Paleta --* Pelota : interactúa con
-Puntuacion --o Paleta : actualiza
-Puntuacion --o Pelota : actualiza
-
-Paleta "1" -- "2..*" JuegoPong
-Pelota "1" -- "1" JuegoPong
-Puntuacion "1" -- "1" JuegoPong
+JuegoPong "1" ..> "1" Menu : usa
+Pelota "1" ..> "2" Paleta : usa
+Pelota "1" ..> "1" Puntuacion : usa
 
 @enduml
