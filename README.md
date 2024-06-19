@@ -10,7 +10,7 @@ Este proyecto es una implementación del clásico juego de ping pong Atari utili
 ## Instalación
 
 1. Clona el repositorio:
-git clone <URL_DEL_REPOSITORIO>
+git clone <https://github.com/MyMCruz/PingPongAt_Prac.git>
 
 2. Compila el proyecto utilizando el makefile proporcionado:
 make
@@ -31,6 +31,15 @@ make
 
 - Pausar juego: Tecla Escape
 
+## Reglas del Juego
+
+El juego sigue las reglas básicas del ping pong, con algunas adaptaciones:
+
+- Los jugadores compiten para evitar que la pelota atraviese su lado del campo.
+- Cada vez que un jugador no logra devolver la pelota, el oponente anota un punto.
+- Si un jugador anota puntos suficientes, gana un set.
+- El primer jugador en ganar un número predefinido de sets gana el juego.
+
 ## Funcionalidades
 
 - **Menú Principal:** Permite a los jugadores iniciar el juego o salir.
@@ -40,7 +49,7 @@ make
 
 ## Diagrama de Clases
 
-![Diagrama de Clases](/docs/class_diagram.png)
+![Diagrama de Clases](/assets/class_diagram.png)
 
 ## Avances del Proyecto
 
@@ -51,21 +60,16 @@ make
 
 ## Capturas de Pantalla
 
-![Captura de pantalla 1](/docs/screenshot1.png)
-![Captura de pantalla 2](/docs/screenshot2.png)
+![Captura de pantalla 1](/assets/screenshot1.png)
+![Captura de pantalla 2](/assets/screenshot2.png)
+![Captura de pantalla 3](/assets/screenshot3.png)
+![Captura de pantalla 4](/assets/screenshot4.png)
 
 ## Video de Demostración
 
-[Enlace al video de demostración](/docs/demo_video.mp4)
+[Enlace al video de demostración](/assets/demo_video.mp4)
 
 ## Contribuyendo
 
 Las contribuciones son bienvenidas. Si encuentras algún error o tienes sugerencias de mejora, por favor abre un problema o envía una solicitud de extracción.
 
-## Créditos
-
-Este proyecto fue desarrollado por [Tu Nombre].
-
-## Licencia
-
-Este proyecto está bajo la [Licencia MIT](LICENSE).
