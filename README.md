@@ -68,6 +68,7 @@ El juego sigue las reglas básicas del ping pong, con algunas adaptaciones:
 ## Video de Demostración
 
 [Enlace al video de demostración](/assets/demo_video.mp4)
+  <https://youtu.be/n8_-G0_Hfv8>
 
 ## Contribuyendo
 
